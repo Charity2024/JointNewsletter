@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644339186185",
+    "project_id": "jointnewsletter",
+    "storage_bucket": "jointnewsletter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644339186185:android:8f0ce5f13df4f05127d6d8",
+        "android_client_info": {
+          "package_name": "com.charity.jointnewsletter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt4YUZBtOYKHZ-YIWmGM6gaoZzq09tdm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
