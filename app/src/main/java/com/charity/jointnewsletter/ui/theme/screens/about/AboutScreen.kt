@@ -1,21 +1,23 @@
 package com.charity.jointnewsletter.ui.theme.screens.about
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.ParagraphStyle
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
@@ -26,33 +28,58 @@ fun AboutScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "About") }
+                title = { Text(text = "About ",
+                    fontSize = 30.sp) },
+
             )
         }
     ) {
+
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 16.dp)
+                .padding(top = 50.dp)
+                .background(Color(0xFFACDF87))
         ) {
             Text(
-                text = "News App",
-             //   style = MaterialTheme.typography.h5,
-                modifier = Modifier.padding(vertical = 16.dp)
+                text = "Joint Weekly Newsletter",
+                modifier = Modifier.padding(vertical = 10.dp),
+                fontSize = 30.sp
+
             )
             Text(
-                text = "Version 1.0",
-             //   style = MaterialTheme.typography.body1,
-                modifier = Modifier.padding(vertical = 8.dp)
+                text = "About this newsletter: " ,
+                modifier = Modifier
+                    .padding(vertical = 5.dp),
+                color = Color.Red,
+                fontSize = 20.sp
             )
             Text(
-                text = "This is a simple news app built with Jetpack Compose.",
-              //  style = MaterialTheme.typography.body1,
-                modifier = Modifier.padding(vertical = 8.dp)
+                text ="Founded in October 2023 as an in-house culture exchange project, today we are dedicated to providing a diverse, open, and inclusive platform for cultural exchange and more. With regular contributions from teens around the world, we are a one-of-a-kind international student newsletter.",
+                modifier = Modifier.padding(vertical = 8.dp),
+                fontSize = 17.sp
             )
             Text(
-                text = "© 2024 News App. All rights reserved.",
-              //  style = MaterialTheme.typography.body1,
+                text = "Editor-in-chief   :Jialiang Tang \n" ,
+                fontSize = 20.sp,
+                modifier = Modifier.padding(vertical = 2.dp)
+            )
+
+            Text(
+                text =
+                        "Contributing Writers: Jialiang Tang (Class 22, Grade 11, China), Diwme Vihanga (Sri Lanka), Maura Blacke (Germany), Jane (Russia), Mina (Italy),  Opy (Bangladesh), Charity (Kenya), Rui Zhong (China),  Olive (Kenya)\n" ,
+                modifier = Modifier.padding(vertical = 2.dp),
+                fontSize = 19.sp
+            )
+            Text(
+                text =  "Distribution   : Jialiang Tang, Duyi Xu (Honggutan Campus), Wenjing Hu (Supu Campus)",
+                modifier = Modifier.padding(vertical = 2.dp),
+                fontSize = 19.sp
+            )
+            Spacer(modifier = Modifier.height(100.dp))
+            Text(
+                text = "© 2024 Joint Weekly Newsletter  App. All rights reserved.",
                 modifier = Modifier.padding(vertical = 8.dp)
             )
         }

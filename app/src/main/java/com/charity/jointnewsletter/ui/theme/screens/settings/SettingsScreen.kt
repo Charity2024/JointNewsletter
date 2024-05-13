@@ -2,10 +2,17 @@ package com.charity.jointnewsletter.ui.theme.screens.settings
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -23,13 +30,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
+import com.charity.jointnewsletter.ui.theme.Poppins
 
 
 @ExperimentalMaterialApi
 @Composable
-fun SettingsScreen() {
-    Column() {
+fun SettingsScreen(navController: NavHostController) {
+    Column(
+        modifier = Modifier
+            .background(Color(0xFFFED9B7))
+    ) {
         HeaderText()
         ProfileCardUI()
         GeneralOptionsUI()
@@ -45,7 +58,7 @@ fun HeaderText() {
     Text(
         text = "Settings",
         fontFamily = FontFamily.SansSerif,
-        color = Color(0xFFF07167),
+        color = Color.Black,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()
@@ -63,7 +76,7 @@ fun ProfileCardUI() {
             .height(150.dp)
             .padding(10.dp)
             .background(Color.White),
-       // elevation = 0.dp,
+        // elevation = 0.dp,
         //shape = Shapes.large
     ) {
         Row(
@@ -74,7 +87,7 @@ fun ProfileCardUI() {
                 Text(
                     text = "Check Your Profile",
                     fontFamily = FontFamily.SansSerif,
-                    color = Color(0xFFF07167),
+                    color = Color(0xFFF07160),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                 )
@@ -87,12 +100,12 @@ fun ProfileCardUI() {
                     fontWeight = FontWeight.SemiBold,
                 )
 
-                Button(modifier = Modifier.padding(top = 10.dp), onClick = {}, colors = ButtonDefaults.buttonColors(
-                        // backgroundColor = PrimaryColor
-                    ), contentPadding = PaddingValues(horizontal = 30.dp), elevation = ButtonDefaults.elevation(
-                        defaultElevation = 0.dp,
-                        pressedElevation = 2.dp
-                    ), shape = Shapes.medium) {
+                /*Button(modifier = Modifier.padding(top = 10.dp), onClick = {}, colors = ButtonDefaults.buttonColors(
+                    // backgroundColor = PrimaryColor
+                ), contentPadding = PaddingValues(horizontal = 30.dp), elevation = ButtonDefaults.elevatedButtonElevation(
+                    defaultElevation = 0.dp,
+                    pressedElevation = 2.dp
+                ), shape = Shapes.medium) {
                     Text(
                         text = "View",
                         fontFamily = FontFamily.SansSerif,
@@ -100,7 +113,7 @@ fun ProfileCardUI() {
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold
                     )
-                }
+                }*/
             }
             Image(
                 painter = painterResource(id = R.drawable.ic_profile_card_image),
@@ -154,7 +167,7 @@ fun GeneralSettingItem(icon: Int, mainText: String, subText: String, onClick: ()
             .padding(bottom = 8.dp)
             .fillMaxWidth()
             .background(Color.White),
-       // elevation = 0.dp,
+        // elevation = 0.dp,
     ) {
         Row(
             modifier = Modifier.padding(vertical = 10.dp, horizontal = 14.dp),
@@ -165,7 +178,6 @@ fun GeneralSettingItem(icon: Int, mainText: String, subText: String, onClick: ()
                 Box(
                     modifier = Modifier
                         .size(34.dp)
-                        //.clip(shape = Shapes.medium)
                         .background(Color(0xFFFED9B7))
                 ) {
                     Icon(
@@ -248,7 +260,6 @@ fun SupportOptionsUI() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @ExperimentalMaterialApi
 @Composable
 fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
@@ -258,7 +269,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
             .padding(bottom = 8.dp)
             .background(Color(0xFFFED9B7))
             .fillMaxWidth(),
-       // elevation = 0.dp,
+
     ) {
         Row(
             modifier = Modifier.padding(vertical = 10.dp, horizontal = 14.dp),
@@ -286,7 +297,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
 
                 Text(
                     text = mainText,
-                    fontFamily = FontFamily.SansSerif,
+                    fontFamily = Poppins,
                     color =Color(0xFFF07167),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
@@ -304,5 +315,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
 @Preview
 @Composable
 private fun Settingsprev(){
-    SettingsScreen()
+    SettingsScreen(navController = rememberNavController())
+
+
 }

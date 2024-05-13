@@ -1,4 +1,6 @@
 [versions]
+accompanistPager = "0.12.0"
+accompanistSystemuicontroller = "0.17.0"
 agp = "8.3.1"
 coilCompose = "2.6.0"
 firebaseDatabase = "20.3.1"
@@ -16,8 +18,12 @@ firebaseAuth = "22.3.1"
 firebaseFirestoreKtx = "24.11.1"
 firebaseAuthKtx = "22.3.1"
 material3Android = "1.2.1"
+constraintlayout = "2.1.4"
+gamesActivity = "3.0.3"
 
 [libraries]
+accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
@@ -41,6 +47,8 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-games-activity = { group = "androidx.games", name = "games-activity", version.ref = "gamesActivity" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

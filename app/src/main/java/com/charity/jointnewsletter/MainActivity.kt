@@ -1,48 +1,42 @@
 package com.charity.jointnewsletter
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.charity.jointnewsletter.components.NavScreen
 import com.charity.jointnewsletter.navigation.AppNavHost
 import com.charity.jointnewsletter.ui.theme.JointNewsletterTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JointNewsletterTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                   // Greeting("Android")
-                    AppNavHost()
+                AppNavHost()
+                val navController = rememberNavController()
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    NavScreen(navController = navController)
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
+    val navController = rememberNavController()
     JointNewsletterTheme {
-        Greeting("Android")
+        Surface(modifier = Modifier.fillMaxSize()) {
+            NavScreen(navController = navController)
+        }
     }
 }

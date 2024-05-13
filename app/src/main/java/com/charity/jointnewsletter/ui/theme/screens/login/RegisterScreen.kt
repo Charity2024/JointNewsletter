@@ -67,17 +67,17 @@ fun RegisterScreen(navController: NavHostController) {
         ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         Image(painter = painterResource(id = R.drawable.logo2 ),
             contentDescription = "logo" )
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(5.dp))
 
 
         Text(text = "Register here",
             color = Color.Black,
             fontFamily = FontFamily.SansSerif,
             fontSize = 30.sp)
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(3.dp))
 
         OutlinedTextField(
             value = email, onValueChange = { email = it },
@@ -89,7 +89,7 @@ fun RegisterScreen(navController: NavHostController) {
                 .padding(8.dp),
 
             )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(1.dp))
 
         OutlinedTextField(value =pass , onValueChange = {pass=it},
             label = { Text(text = "Enter password", color = Color.Black) },
@@ -99,7 +99,7 @@ fun RegisterScreen(navController: NavHostController) {
                 .fillMaxWidth(0.8f)
                 .padding(8.dp)
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(1.dp))
         OutlinedTextField(value =confirmpass , onValueChange = {
             confirmpass=it},
             label = { Text(text = " Confirm Password", color = Color.Black) },
@@ -110,7 +110,7 @@ fun RegisterScreen(navController: NavHostController) {
                 .padding(8.dp)
 
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(1.dp))
 
 
         Button(onClick = {
@@ -125,7 +125,7 @@ fun RegisterScreen(navController: NavHostController) {
                 color = Color.Black
             )
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(3.dp))
 
 
         Text(text = "Have an Account? Click to Login",

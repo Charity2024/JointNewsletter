@@ -7,17 +7,25 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.ui.theme.screens.about.AboutScreen
-import com.charity.jointnewsletter.ui.theme.screens.about.FeedbackScreen
-import com.charity.jointnewsletter.ui.theme.screens.articles.SearchScreen
+import com.charity.jointnewsletter.ui.theme.screens.about.ContactScreen
+import com.charity.jointnewsletter.ui.theme.screens.articles.Categories
+import com.charity.jointnewsletter.ui.theme.screens.home.HomeScreen
 import com.charity.jointnewsletter.ui.theme.screens.login.LoginScreen
 import com.charity.jointnewsletter.ui.theme.screens.login.RegisterScreen
-import com.charity.jointnewsletter.ui.theme.screens.notification.NotificationScreen
 import com.charity.jointnewsletter.ui.theme.screens.onboarding.OnboardingScreen
+import com.charity.jointnewsletter.ui.theme.screens.settings.SettingsScreen
+import com.charity.jointnewsletter.ui.theme.screens.splash.SplashScreen
 
 @Composable
-fun AppNavHost(modifier: Modifier = Modifier, navController: NavHostController = rememberNavController(), startDestination:String= ROUTE_LOGIN) {
+fun AppNavHost(modifier: Modifier = Modifier,
+               navController: NavHostController = rememberNavController(),
+               startDestination:String= ROUTE_HOME) {
 
-    NavHost(navController = navController, modifier=modifier, startDestination = startDestination ){
+    NavHost(navController = navController, modifier = modifier, startDestination = startDestination ){
+        composable(ROUTE_SPLASH){
+            SplashScreen(navController )
+        }
+
         composable(ROUTE_LOGIN){
             LoginScreen(navController)
         }
@@ -26,33 +34,34 @@ fun AppNavHost(modifier: Modifier = Modifier, navController: NavHostController =
         }
 
         composable(ROUTE_HOME){
-           // HomeScreen(navController)
+            HomeScreen(navController)
         }
         composable(ROUTE_ABOUT){
             AboutScreen(navController )
         }
         composable(ROUTE_ARTICLE_DETAILS){
-           // ArticleDetailsScreen(navController )
+           //DetailScreen(navController )
         }
-        composable(ROUTE_CATEGORY_TOPIC){
-           // CategoryScreen(navController )
+        composable(ROUTE_CATEGORY){
+            Categories(navController)
+
         }
-        composable(ROUTE_FEEDBACK){
-            FeedbackScreen(navController )
+        composable(ROUTE_CONTACT){
+            ContactScreen(navController,)
         }
         composable(ROUTE_ONBOARDING){
             OnboardingScreen(navController )
         }
-        composable(ROUTE_SAVED){
-           // SavedArticlesScreen(navController )
+        composable(ROUTE_TOPIC){
+           // TopicScreen(navController )
         }
-        composable(ROUTE_SEARCH){
-            SearchScreen(navController )
+        composable(ROUTE_POLICY){
+            //SearchScreen(navController )
         }
+        composable(ROUTE_SETTINGS){
+            SettingsScreen(navController )
 
-
-
-
+        }
     }
 
 }

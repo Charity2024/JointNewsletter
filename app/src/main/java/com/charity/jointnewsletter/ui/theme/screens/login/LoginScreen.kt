@@ -65,7 +65,7 @@ fun LoginScreen(navController: NavHostController) {
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Image(painter = painterResource(id = R.drawable.logo2 ),
             contentDescription = "lock" )
         Spacer(modifier = Modifier.height(15.dp))
