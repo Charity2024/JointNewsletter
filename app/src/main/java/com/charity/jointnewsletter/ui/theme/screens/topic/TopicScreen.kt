@@ -1,4 +1,4 @@
-package com.charity.jointnewsletter.ui.theme.screens.articles
+package com.charity.jointnewsletter.ui.theme.screens.topic
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -29,7 +29,7 @@ import androidx.navigation.NavHostController
 fun TopicScreen(
     imageId: Array<Int>,
     names: Array<String>,
-    ingredients: Array<String>,
+    description: Array<String>,
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
@@ -42,7 +42,7 @@ fun TopicScreen(
                 modifier,
                 painter = imageId,
                 title = names,
-                ingredients = ingredients,
+                description = description,
                 itemIndex = it,
                 navController = navController
             )
@@ -56,7 +56,7 @@ fun ColumnItem(
     modifier: Modifier,
     painter: Array<Int>,
     title: Array<String>,
-    ingredients: Array<String>,
+    description: Array<String>,
     itemIndex: Int,
     navController: NavController
 ) {
@@ -86,7 +86,7 @@ fun ColumnItem(
             )
             Column(modifier.padding(12.dp)) {
                 Text(text = title[itemIndex], fontSize = 24.sp, fontWeight = FontWeight.Bold)
-                Text(text = ingredients[itemIndex], fontSize = 18.sp)
+                Text(text = description[itemIndex], fontSize = 18.sp)
 
             }
         }

@@ -1,4 +1,4 @@
-package com.charity.jointnewsletter.ui.theme.screens.articles
+package com.charity.jointnewsletter.ui.theme.screens.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -15,10 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun DetailScreen(
@@ -47,4 +48,16 @@ fun DetailScreen(
         Text(text = names[itemIndex!!], fontSize = 30.sp, fontWeight = FontWeight.Bold)
         Text(text = description[itemIndex], fontSize = 18.sp)
     }
+}
+
+
+
+@Preview
+@Composable
+fun Detailprev(){
+    DetailScreen(navController = rememberNavController())
+}
+
+fun DetailScreen(navController: NavHostController) {
+
 }

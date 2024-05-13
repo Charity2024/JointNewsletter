@@ -1,4 +1,4 @@
-package com.charity.jointnewsletter.ui.theme.screens.articles
+package com.charity.jointnewsletter.ui.theme.screens.category
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -12,6 +12,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.charity.jointnewsletter.R
+import com.charity.jointnewsletter.ui.theme.screens.detail.DetailScreen
+import com.charity.jointnewsletter.ui.theme.screens.topic.TopicScreen
 
 
 @Composable
@@ -89,12 +91,10 @@ fun Categories(navController: NavHostController) {
     }
 }
 
-private fun <AnimatedContentScope> AnimatedContentScope.DetailScreen(images: Array<Int>, names: Array<String>, description: Array<String>, itemIndex: Int?) {
+fun DetailScreen(images: Array<Int>, names: Array<String>, description: Array<String>, itemIndex: Int?) {
 
 }
 
-private fun Any.TopicScreen(modifier: Array<Int>, imageId: Array<String>, names: Array<String>, navController: NavHostController) {
 
-}
 
 

@@ -4,5 +4,5 @@ object NavTitle {
     const val HOME = "Home"
     const val SEARCH = "Search"
     const val SETTINGS = "Settings"
-    const val TOPICS = "topics"
+    const val TOPICS = "Topics"
 }

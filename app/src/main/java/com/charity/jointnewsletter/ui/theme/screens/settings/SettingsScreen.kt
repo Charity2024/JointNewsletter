@@ -44,7 +44,7 @@ fun SettingsScreen(navController: NavHostController) {
             .background(Color(0xFFFED9B7))
     ) {
         HeaderText()
-        ProfileCardUI()
+       // ProfileCardUI()
         GeneralOptionsUI()
         SupportOptionsUI()
     }
@@ -62,14 +62,14 @@ fun HeaderText() {
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 30.dp, bottom = 10.dp),
+            .padding(top = 10.dp, bottom = 2.dp),
         fontWeight = FontWeight.ExtraBold,
-        fontSize = 16.sp
+        fontSize = 25.sp
     )
 }
 
-@Composable
-fun ProfileCardUI() {
+//@Composable
+/*fun ProfileCardUI() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -123,7 +123,7 @@ fun ProfileCardUI() {
         }
     }
 }
-
+*/
 @ExperimentalMaterialApi
 @Composable
 fun GeneralOptionsUI() {
@@ -131,15 +131,16 @@ fun GeneralOptionsUI() {
         modifier = Modifier
             .padding(horizontal = 14.dp)
             .padding(top = 10.dp)
+
     ) {
         Text(
             text = "General",
             fontFamily = FontFamily.SansSerif,
             color = Color(0xFFF07167),
-            fontSize = 14.sp,
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .padding(vertical = 8.dp)
+                .padding(vertical = 18.dp)
         )
         GeneralSettingItem(
             icon = R.drawable.ic_rounded_notification,
@@ -232,10 +233,10 @@ fun SupportOptionsUI() {
             text = "Support",
             fontFamily = FontFamily.SansSerif,
             color = Color(0xFFF07167),
-            fontSize = 14.sp,
+            fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .padding(vertical = 8.dp)
+                .padding(vertical = 28.dp)
         )
         SupportItem(
             icon = R.drawable.ic_whatsapp,
@@ -266,7 +267,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
     Card(
         onClick = { onClick() },
         modifier = Modifier
-            .padding(bottom = 8.dp)
+            .padding(bottom = 15.dp)
             .background(Color(0xFFFED9B7))
             .fillMaxWidth(),
 

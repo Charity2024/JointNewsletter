@@ -1,4 +1,4 @@
-package com.charity.jointnewsletter.ui.theme.screens.about
+package com.charity.jointnewsletter.ui.theme.screens.contact
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
