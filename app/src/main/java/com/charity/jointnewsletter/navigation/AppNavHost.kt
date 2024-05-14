@@ -55,7 +55,7 @@ fun AppNavHost(modifier: Modifier = Modifier,
             OnboardingScreen(navController )
         }
         composable(ROUTE_TOPICS){
-            //TopicScreen(navController )
+           // TopicScreen()
         }
         composable(ROUTE_POLICY){
             //PolicyScreen(navController )

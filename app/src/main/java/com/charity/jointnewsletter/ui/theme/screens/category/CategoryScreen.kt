@@ -63,6 +63,7 @@ fun Categories(navController: NavHostController) {
             "Retells the mournful or inspiring stories from a difficult time for all humanity",
             "Explores the pros and cons of this emerging technology.",
             "",
+            "Dives into the history of different language and how they evolved with time...",
             ""
 
         )

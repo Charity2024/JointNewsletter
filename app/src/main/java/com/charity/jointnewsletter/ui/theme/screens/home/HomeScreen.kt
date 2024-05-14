@@ -3,6 +3,7 @@ package com.charity.jointnewsletter.ui.theme.screens.home
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -38,9 +40,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
@@ -56,7 +60,7 @@ import kotlinx.coroutines.launch
 fun HomeScreen(navController: NavController) {
 
     val images = listOf(
-        R.drawable.img,
+        R.drawable.img_1,
         R.drawable.splash,
         R.drawable.logo,
         R.drawable.logo2
@@ -149,16 +153,27 @@ fun HomeScreen(navController: NavController) {
             }
         }
 
+
+
+
         PageIndicator(
             pageCount = images.size,
             currentPage = pagerState.currentPage,
             modifier = modifier
         )
+
+
         Title()
         Homebtns()
         Title2()
+        MyCard()
+
+
+
     }
 }
+
+
 
 @Composable
 fun PageIndicator(pageCount: Int, currentPage: Int, modifier: Modifier) {
@@ -188,23 +203,14 @@ fun IndicatorDots(isSelected: Boolean, modifier: Modifier) {
 @Composable
 fun Title(){
     Text(
-        text = "Permanent Sections",
-        fontSize = 30.sp,
-        fontWeight = FontWeight.ExtraBold,
-        modifier = Modifier
-            .padding(vertical = 10.dp)
-        )
-}
-@Composable
-fun Title2(){
-    Text(
-        text = "Latest Issue",
-        fontSize = 28.sp,
+        text = "Popular Sections",
+        fontSize = 21.sp,
         fontWeight = FontWeight.ExtraBold,
         modifier = Modifier
             .padding(vertical = 10.dp)
     )
 }
+
 @Composable
 fun Homebtns() {
 
@@ -225,7 +231,7 @@ fun Homebtns() {
 
 @Composable
 fun MyApp(modifier: Modifier = Modifier, languages: List<String>) {
-        Column(modifier.fillMaxSize()) {
+        Column(modifier.padding(0.dp)) {
             LazyRow( ) {
                 items(items = languages) { item ->
                     RowItem(modifier = modifier, name = item)
@@ -263,10 +269,68 @@ fun RowItem(modifier: Modifier, name: String) {
     }
 
 }
+@Composable
+fun Title2(){
+    Text(
+        text = "Latest Issue",
+        fontSize = 20.sp,
+        fontWeight = FontWeight.ExtraBold,
+        modifier = Modifier
+            .padding(vertical = 10.dp)
+    )
+}
+
+@Composable
+fun MyCard() {
+
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+
+        Card(
+            modifier = Modifier
+                .width(370.dp)
+                .height(130.dp),
+            // shape = CutCornerShape(20.dp)
+            elevation = CardDefaults.cardElevation(10.dp),
+            //border = BorderStroke(3.dp,Color.Gray)
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            )
+        ) {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Image(
+                    painter = painterResource(id = R.drawable.ancient),
+                    contentDescription = "null"
+                )
+                Column {
+                    Text(
+                        text = "Issue No.11: \"Ancient History\" Section",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        modifier = Modifier.padding(10.dp)
+                    )
+                    Text(
+                        text = "Dives into the history of different language and how they evolved with time...",
+                        fontSize = 15.sp,
+                        modifier = Modifier.padding(6.dp),
+                        maxLines = 3,
+                        overflow = TextOverflow.Ellipsis,
+                        color = Color.Gray
+                    )
+                } 
+            }
+
+        }
+    }
+}
+
+
 
 @Preview
 @Composable
-fun homeprev() {
+fun Homeprev() {
     HomeScreen(rememberNavController())
     val languages = listOf(
         "Flags and Festivals",

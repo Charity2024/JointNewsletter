@@ -1,5 +1,6 @@
 package com.charity.jointnewsletter.ui.theme.screens.settings
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -33,15 +34,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
+import com.charity.jointnewsletter.navigation.ROUTE_CONTACT
 import com.charity.jointnewsletter.ui.theme.Poppins
 
 
+@SuppressLint("InvalidColorHexValue")
 @ExperimentalMaterialApi
 @Composable
 fun SettingsScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
-            .background(Color(0xFFFED9B7))
+            .background(Color(0xFFE6D7B6))
     ) {
         HeaderText()
        // ProfileCardUI()
@@ -196,7 +199,7 @@ fun GeneralSettingItem(icon: Int, mainText: String, subText: String, onClick: ()
                     Text(
                         text = mainText,
                         fontFamily = FontFamily.SansSerif,
-                        color = Color(0xFFF07167),
+                        color = Color(0xFFD5A187),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -237,11 +240,14 @@ fun SupportOptionsUI() {
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .padding(vertical = 28.dp)
+
         )
         SupportItem(
             icon = R.drawable.ic_whatsapp,
             mainText = "Contact",
-            onClick = {}
+            onClick = {
+
+            }
         )
         SupportItem(
             icon = R.drawable.ic_feedback,
@@ -299,7 +305,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
                 Text(
                     text = mainText,
                     fontFamily = Poppins,
-                    color =Color(0xFFF07167),
+                    color =Color(0xFFD5A187),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                 )
