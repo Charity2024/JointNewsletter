@@ -2,5 +2,5 @@ package com.charity.jointnewsletter.components.nav
 
 
 enum class NavPath {
-    HOME, SEARCH, TOPICS, SETTINGS
+    HOME, NOTIFICATIONS, TOPICS, SETTINGS
 }

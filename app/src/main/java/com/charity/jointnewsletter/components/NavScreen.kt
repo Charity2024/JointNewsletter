@@ -7,11 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.charity.jointnewsletter.navigation.AppNavHost
 
-/**
- * Composable function that represents the main screen of the application.
- *
- * @param navController The navigation controller used for handling navigation between screens.
- */
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun NavScreen(navController: NavHostController) {

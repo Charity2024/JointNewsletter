@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
@@ -44,7 +45,7 @@ import com.charity.jointnewsletter.ui.theme.Poppins
 fun SettingsScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
-            .background(Color(0xFFE6D7B6))
+            .background(Color(0xFFF6E9B2))
     ) {
         HeaderText()
        // ProfileCardUI()
@@ -246,7 +247,8 @@ fun SupportOptionsUI() {
             icon = R.drawable.ic_whatsapp,
             mainText = "Contact",
             onClick = {
-
+                val navController = rememberNavController()
+                navController.navigate(ROUTE_CONTACT)
             }
         )
         SupportItem(
@@ -269,9 +271,9 @@ fun SupportOptionsUI() {
 
 @ExperimentalMaterialApi
 @Composable
-fun SupportItem(icon: Int, mainText: String, onClick: () -> Unit) {
+fun SupportItem(icon: Int, mainText: String, onClick: @Composable () -> Unit) {
     Card(
-        onClick = { onClick() },
+        onClick = { onClick},
         modifier = Modifier
             .padding(bottom = 15.dp)
             .background(Color(0xFFFED9B7))

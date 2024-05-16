@@ -1,6 +1,8 @@
 package com.charity.jointnewsletter.ui.theme.screens.home
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,6 +26,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -46,8 +50,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
+import com.charity.jointnewsletter.data.AuthViewModel
+import com.charity.jointnewsletter.navigation.ROUTE_FLAGS
+import com.charity.jointnewsletter.navigation.ROUTE_HOME
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -234,23 +242,63 @@ fun MyApp(modifier: Modifier = Modifier, languages: List<String>) {
         Column(modifier.padding(0.dp)) {
             LazyRow( ) {
                 items(items = languages) { item ->
-                    RowItem(modifier = modifier, name = item)
+                    val navController = rememberNavController()
+                    RowItem( navController = navController)
                 }
             }
 
 
         }
 }
+
+
+
+@SuppressLint("InvalidColorHexValue")
 @Composable
-fun RowItem(modifier: Modifier, name: String) {
-    Card(
+fun RowItem( navController: NavHostController) {
+
+    Button(onClick ={ /*TODO*/ },
+        border = BorderStroke(1.dp, Color.DarkGray),
+        colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
+        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+    ) {
+        Text(text = "Flags and Festivals", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
+    }
+    Button(onClick = { /*TODO*/ },
+        border = BorderStroke(1.dp, Color.DarkGray),
+        colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
+        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+    ) {
+        Text(text = "Poetic Expression", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
+    }
+    Button(onClick = { /*TODO*/ },
+        border = BorderStroke(1.dp, Color.DarkGray),
+        colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
+        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+    ) {
+        Text(text = "World in Dishes", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
+    }
+
+    Button(
+        onClick = { /*TODO*/ },
+        border = BorderStroke(1.dp, Color.DarkGray),
+        colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
+        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+    ) {
+        Text(text = "Weekly Crossword", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
+    }
+   /* Card(
         modifier
             .padding(10.dp)
             .fillMaxWidth()
-            .height(80.dp)
+            .height(50.dp)
+            .width(90.dp)
+            .clickable {
+                onClick  (navController.navigate(ROUTE_HOME))
+            }
             .aspectRatio(1.5f),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = Color(0xFFF6E9B2)
         ),
         shape = CardDefaults.elevatedShape,
         elevation = CardDefaults.cardElevation(10.dp)
@@ -262,13 +310,18 @@ fun RowItem(modifier: Modifier, name: String) {
             contentAlignment = Alignment.Center
         )
         {
-            Text(text = name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text(text = name, fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
 
         }
 
-    }
+    }*/
 
 }
+
+fun onClick(navigate: Unit) {
+
+}
+
 @Composable
 fun Title2(){
     Text(
@@ -292,11 +345,9 @@ fun MyCard() {
             modifier = Modifier
                 .width(370.dp)
                 .height(130.dp),
-            // shape = CutCornerShape(20.dp)
             elevation = CardDefaults.cardElevation(10.dp),
-            //border = BorderStroke(3.dp,Color.Gray)
             colors = CardDefaults.cardColors(
-                containerColor = Color.White
+                containerColor = Color(0xFF7ABA78)
             )
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {

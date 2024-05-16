@@ -13,7 +13,7 @@ sealed class NavItem {
         Item(path = NavPath.HOME.toString(), title = NavTitle.HOME, icon = Icons.Default.Home)
 
     object Search :
-        Item(path = NavPath.SEARCH.toString(), title = NavTitle.SEARCH, icon = Icons.Default.Search)
+        Item(path = NavPath.NOTIFICATIONS.toString(), title = NavTitle.NOTIFICATIONS, icon = Icons.Default.Notifications)
 
     object List :
         Item(path = NavPath.TOPICS.toString(), title = NavTitle.TOPICS, icon = Icons.AutoMirrored.Filled.List)
