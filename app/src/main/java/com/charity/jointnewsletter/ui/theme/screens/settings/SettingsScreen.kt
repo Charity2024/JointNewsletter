@@ -3,6 +3,7 @@ package com.charity.jointnewsletter.ui.theme.screens.settings
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,7 +36,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
+import com.charity.jointnewsletter.navigation.ROUTE_ABOUT
 import com.charity.jointnewsletter.navigation.ROUTE_CONTACT
+import com.charity.jointnewsletter.navigation.ROUTE_FEEDBACK
+import com.charity.jointnewsletter.navigation.ROUTE_POLICY
+import com.charity.jointnewsletter.navigation.ROUTE_REGISTER
 import com.charity.jointnewsletter.ui.theme.Poppins
 
 
@@ -45,10 +50,9 @@ import com.charity.jointnewsletter.ui.theme.Poppins
 fun SettingsScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
-            .background(Color(0xFFF6E9B2))
+            .background(Color(0xFFF3C3A3))
     ) {
         HeaderText()
-       // ProfileCardUI()
         GeneralOptionsUI()
         SupportOptionsUI()
     }
@@ -72,62 +76,7 @@ fun HeaderText() {
     )
 }
 
-//@Composable
-/*fun ProfileCardUI() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(150.dp)
-            .padding(10.dp)
-            .background(Color.White),
-        // elevation = 0.dp,
-        //shape = Shapes.large
-    ) {
-        Row(
-            modifier = Modifier.padding(20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column() {
-                Text(
-                    text = "Check Your Profile",
-                    fontFamily = FontFamily.SansSerif,
-                    color = Color(0xFFF07160),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                )
 
-                Text(
-                    text = "UI.Stack.YT@gmail.com",
-                    fontFamily = FontFamily.SansSerif,
-                    color = Color.Gray,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-
-                /*Button(modifier = Modifier.padding(top = 10.dp), onClick = {}, colors = ButtonDefaults.buttonColors(
-                    // backgroundColor = PrimaryColor
-                ), contentPadding = PaddingValues(horizontal = 30.dp), elevation = ButtonDefaults.elevatedButtonElevation(
-                    defaultElevation = 0.dp,
-                    pressedElevation = 2.dp
-                ), shape = Shapes.medium) {
-                    Text(
-                        text = "View",
-                        fontFamily = FontFamily.SansSerif,
-                        color = Color(0xFFF07167),
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }*/
-            }
-            Image(
-                painter = painterResource(id = R.drawable.ic_profile_card_image),
-                contentDescription = "",
-                modifier = Modifier.height(120.dp)
-            )
-        }
-    }
-}
-*/
 @ExperimentalMaterialApi
 @Composable
 fun GeneralOptionsUI() {
@@ -140,7 +89,7 @@ fun GeneralOptionsUI() {
         Text(
             text = "General",
             fontFamily = FontFamily.SansSerif,
-            color = Color(0xFFF07167),
+            color = Color(0xFF0B3C49),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
@@ -150,7 +99,9 @@ fun GeneralOptionsUI() {
             icon = R.drawable.ic_rounded_notification,
             mainText = "Notifications",
             subText = "Customize notifications",
-            onClick = {}
+            onClick = {
+
+            }
         )
         GeneralSettingItem(
             icon = R.drawable.ic_more,
@@ -200,7 +151,7 @@ fun GeneralSettingItem(icon: Int, mainText: String, subText: String, onClick: ()
                     Text(
                         text = mainText,
                         fontFamily = FontFamily.SansSerif,
-                        color = Color(0xFFD5A187),
+                        color = Color(0xFF0B3C49),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -236,7 +187,7 @@ fun SupportOptionsUI() {
         Text(
             text = "Support",
             fontFamily = FontFamily.SansSerif,
-            color = Color(0xFFF07167),
+            color = Color(0xFF0B3C49),
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
@@ -254,17 +205,26 @@ fun SupportOptionsUI() {
         SupportItem(
             icon = R.drawable.ic_feedback,
             mainText = "Feedback",
-            onClick = {}
+            onClick = {
+                val navController = rememberNavController()
+                navController.navigate(ROUTE_FEEDBACK)
+            }
         )
         SupportItem(
             icon = R.drawable.ic_privacy_policy,
             mainText = "Privacy Policy",
-            onClick = {}
+            onClick = {
+                val navController = rememberNavController()
+                navController.navigate(ROUTE_POLICY)
+            }
         )
         SupportItem(
             icon = R.drawable.ic_about,
             mainText = "About",
-            onClick = {}
+            onClick = {
+                val navController = rememberNavController()
+                navController.navigate(ROUTE_ABOUT)
+            }
         )
     }
 }

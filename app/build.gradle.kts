@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.charity.jointnewsletter"
-        minSdk = 21
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.games.activity)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

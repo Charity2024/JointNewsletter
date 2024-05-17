@@ -5,19 +5,16 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -33,7 +30,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -48,14 +44,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
-import com.charity.jointnewsletter.data.AuthViewModel
-import com.charity.jointnewsletter.navigation.ROUTE_FLAGS
-import com.charity.jointnewsletter.navigation.ROUTE_HOME
+import com.charity.jointnewsletter.components.NavBar
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -64,122 +56,126 @@ import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalPagerApi::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavHostController =   rememberNavController()) {
 
-    val images = listOf(
-        R.drawable.img_1,
-        R.drawable.splash,
-        R.drawable.logo,
-        R.drawable.logo2
-    )
-    val pagerState = rememberPagerState(
-        pageCount =
-        images.size
-    )
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(2000)
-            val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
-            pagerState.scrollToPage(nextPage)
+
+
+        val images = listOf(
+            R.drawable.img_1,
+            R.drawable.logo,
+            R.drawable.splash,
+            R.drawable.logo2
+        )
+        val pagerState = rememberPagerState(
+            pageCount =
+            images.size
+        )
+        LaunchedEffect(Unit) {
+            while (true) {
+                delay(2000)
+                val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
+                pagerState.scrollToPage(nextPage)
+            }
         }
-    }
-    val scope = rememberCoroutineScope()
+        val scope = rememberCoroutineScope()
 
-    val modifier = Modifier
-    Column(
-        modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Box(modifier = modifier.wrapContentSize()) {
-            HorizontalPager(
-                state = pagerState,
-                modifier
-                    .wrapContentSize()
-
-            ) { currentPage ->
-
-                Card(
+        val modifier = Modifier
+        Column(
+            modifier.fillMaxSize().background(Color(0xFFF3C3A3)),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Box(modifier = modifier.wrapContentSize()) {
+                HorizontalPager(
+                    state = pagerState,
                     modifier
                         .wrapContentSize()
-                        .padding(26.dp),
-                    elevation = CardDefaults.cardElevation(8.dp)
+
+                ) { currentPage ->
+
+                    Card(
+                        modifier
+                            .wrapContentSize()
+                            .padding(26.dp),
+                        elevation = CardDefaults.cardElevation(8.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = images[currentPage]),
+                            contentDescription = ""
+                        )
+                    }
+                }
+                IconButton(
+                    onClick = {
+                        val nextPage = pagerState.currentPage + 1
+                        if (nextPage < images.size) {
+                            scope.launch {
+                                pagerState.scrollToPage(nextPage)
+                            }
+                        }
+                    },
+                    modifier
+                        .padding(30.dp)
+                        .size(48.dp)
+                        .align(Alignment.CenterEnd)
+                        .clip(CircleShape),
+                    colors = IconButtonDefaults.iconButtonColors(
+                        containerColor = Color(0x52373737)
+                    )
                 ) {
-                    Image(
-                        painter = painterResource(id = images[currentPage]),
-                        contentDescription = ""
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowRight, contentDescription = "",
+                        modifier.fillMaxSize(),
+                        tint = Color.LightGray
+                    )
+                }
+                IconButton(
+                    onClick = {
+                        val prevPage = pagerState.currentPage - 1
+                        if (prevPage >= 0) {
+                            scope.launch {
+                                pagerState.scrollToPage(prevPage)
+                            }
+                        }
+                    },
+                    modifier
+                        .padding(30.dp)
+                        .size(48.dp)
+                        .align(Alignment.CenterStart)
+                        .clip(CircleShape),
+                    colors = IconButtonDefaults.iconButtonColors(
+                        containerColor = Color(0x52373737)
+                    )
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowLeft, contentDescription = "",
+                        modifier.fillMaxSize(),
+                        tint = Color.LightGray
                     )
                 }
             }
-            IconButton(
-                onClick = {
-                    val nextPage = pagerState.currentPage + 1
-                    if (nextPage < images.size) {
-                        scope.launch {
-                            pagerState.scrollToPage(nextPage)
-                        }
-                    }
-                },
-                modifier
-                    .padding(30.dp)
-                    .size(48.dp)
-                    .align(Alignment.CenterEnd)
-                    .clip(CircleShape),
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = Color(0x52373737)
-                )
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.KeyboardArrowRight, contentDescription = "",
-                    modifier.fillMaxSize(),
-                    tint = Color.LightGray
-                )
-            }
-            IconButton(
-                onClick = {
-                    val prevPage = pagerState.currentPage -1
-                    if (prevPage >= 0) {
-                        scope.launch {
-                            pagerState.scrollToPage(prevPage)
-                        }
-                    }
-                },
-                modifier
-                    .padding(30.dp)
-                    .size(48.dp)
-                    .align(Alignment.CenterStart)
-                    .clip(CircleShape),
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = Color(0x52373737)
-                )
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.KeyboardArrowLeft, contentDescription = "",
-                    modifier.fillMaxSize(),
-                    tint = Color.LightGray
-                )
-            }
+
+
+
+
+            PageIndicator(
+                pageCount = images.size,
+                currentPage = pagerState.currentPage,
+                modifier = modifier
+            )
+
+
+            Title()
+            Homebtns()
+            Title2()
+            MyCard()
+
+
         }
-
-
-
-
-        PageIndicator(
-            pageCount = images.size,
-            currentPage = pagerState.currentPage,
-            modifier = modifier
-        )
-
-
-        Title()
-        Homebtns()
-        Title2()
-        MyCard()
-
-
-
     }
-}
+
+
 
 
 
@@ -260,21 +256,27 @@ fun RowItem( navController: NavHostController) {
     Button(onClick ={ /*TODO*/ },
         border = BorderStroke(1.dp, Color.DarkGray),
         colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
-        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+        modifier = Modifier
+            .fillMaxWidth(0.4f)
+            .padding(horizontal = 13.dp)
     ) {
         Text(text = "Flags and Festivals", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
     }
     Button(onClick = { /*TODO*/ },
         border = BorderStroke(1.dp, Color.DarkGray),
         colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
-        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+        modifier = Modifier
+            .fillMaxWidth(0.4f)
+            .padding(horizontal = 13.dp)
     ) {
         Text(text = "Poetic Expression", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
     }
     Button(onClick = { /*TODO*/ },
         border = BorderStroke(1.dp, Color.DarkGray),
         colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
-        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+        modifier = Modifier
+            .fillMaxWidth(0.4f)
+            .padding(horizontal = 13.dp)
     ) {
         Text(text = "World in Dishes", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
     }
@@ -283,7 +285,9 @@ fun RowItem( navController: NavHostController) {
         onClick = { /*TODO*/ },
         border = BorderStroke(1.dp, Color.DarkGray),
         colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
-        modifier = Modifier.fillMaxWidth(0.4f).padding(horizontal = 13.dp)
+        modifier = Modifier
+            .fillMaxWidth(0.4f)
+            .padding(horizontal = 13.dp)
     ) {
         Text(text = "Weekly Crossword", fontSize = 14.sp, fontWeight = FontWeight.Bold,color= Color(0xFF086847))
     }
@@ -370,7 +374,7 @@ fun MyCard() {
                         overflow = TextOverflow.Ellipsis,
                         color = Color.Gray
                     )
-                } 
+                }
             }
 
         }

@@ -5,6 +5,7 @@ import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 
@@ -13,7 +14,7 @@ sealed class NavItem {
         Item(path = NavPath.HOME.toString(), title = NavTitle.HOME, icon = Icons.Default.Home)
 
     object Search :
-        Item(path = NavPath.NOTIFICATIONS.toString(), title = NavTitle.NOTIFICATIONS, icon = Icons.Default.Notifications)
+        Item(path = NavPath.REGISTER.toString(), title = NavTitle.REGISTER, icon = Icons.Default.Person)
 
     object List :
         Item(path = NavPath.TOPICS.toString(), title = NavTitle.TOPICS, icon = Icons.AutoMirrored.Filled.List)

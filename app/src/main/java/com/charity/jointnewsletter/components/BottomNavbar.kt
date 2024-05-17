@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -24,7 +25,9 @@ fun BottomNavigationBar(navController: NavHostController) {
     val navItems = listOf(NavItem.Home, NavItem.Search, NavItem.List, NavItem.Profile)
     var selectedItem by rememberSaveable { mutableStateOf(0) }
 
-    NavigationBar {
+    NavigationBar (
+
+    ){
         navItems.forEachIndexed { index, item ->
             NavigationBarItem(
                 alwaysShowLabel = true,
@@ -50,7 +53,6 @@ fun BottomNavigationBar(navController: NavHostController) {
 @Composable
 fun NavBar(){
     JointNewsletterTheme {
-        AppNavHost()
         val navController = rememberNavController()
         Surface(modifier = Modifier.fillMaxSize()) {
             NavScreen(navController = navController)

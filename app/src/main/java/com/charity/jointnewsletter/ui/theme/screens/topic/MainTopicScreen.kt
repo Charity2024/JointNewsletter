@@ -71,10 +71,10 @@ fun ColumnItem(
             .padding(10.dp)
             .wrapContentSize()
             .clickable {
-                navController.navigate(route = "DetailScreen/$itemIndex")
+                navController.navigate( "DetailScreen/$itemIndex")
             },
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFF6E9B2)
+            containerColor = Color(0xFFCC6F5F)
         ),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
@@ -89,10 +89,14 @@ fun ColumnItem(
                 modifier.size(140.dp)
             )
             Column(modifier.padding(12.dp)) {
-                Text(text = title[itemIndex], fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFF0A6847))
+                Text(text = title[itemIndex],
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF0B3C49)
+                )
                 Text(text = description[itemIndex],
                     fontSize = 18.sp,
-                    color = Color(0xFF0A6847),
+                    color = Color(0xFF355655),
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
                 )
@@ -101,6 +105,14 @@ fun ColumnItem(
         }
     }
 }
+
+/*@Preview
+@Composable
+fun Topicprev(){
+    TopicScreen(imageId , names , description , navController )
+}*/
+
+
 
 
 

@@ -10,13 +10,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -55,7 +58,10 @@ fun RegisterScreen(navController: NavHostController) {
         Color(0xFFFED9B7),
         Color(0xFFF07167)
     )
+    val scrollState = rememberScrollState()
+
     Column(modifier = Modifier
+        .verticalScroll(scrollState)
         .fillMaxSize()
         .background(
             brush = gradientackgroundBrush(
@@ -132,6 +138,13 @@ fun RegisterScreen(navController: NavHostController) {
             modifier = Modifier
                 .clickable { navController.navigate(ROUTE_LOGIN)}
         )
+        Spacer(modifier = Modifier.height(70.dp))
+        Text(text = "Have an Account? Click to Login",
+            color = Color.Black,
+            modifier = Modifier
+                .clickable { navController.navigate(ROUTE_LOGIN)}
+        )
+
 
     }
 

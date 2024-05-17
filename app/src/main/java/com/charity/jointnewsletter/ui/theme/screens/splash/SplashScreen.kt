@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.charity.jointnewsletter.R
 import com.charity.jointnewsletter.navigation.ROUTE_HOME
+import com.charity.jointnewsletter.navigation.ROUTE_TOPICS
 import kotlinx.coroutines.delay
 
 @Composable
@@ -37,12 +38,12 @@ fun SplashScreen(navController: NavHostController) {
                 })
         )
         delay(1500L)
-        navController.navigate(ROUTE_HOME)
+        navController.navigate(ROUTE_TOPICS)
     }
 
     // Image
     Box(contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()) {
+        modifier = Modifier.fillMaxSize() .background(Color(0xFF81B723))) {
         Image(painter = painterResource(id = R.drawable.img_2),
             contentDescription = "Logo",
             modifier = Modifier.scale(scale.value))
