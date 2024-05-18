@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -20,7 +21,7 @@ import com.charity.jointnewsletter.ui.theme.screens.topic.TopicScreen
 fun Categories(navController: NavHostController) {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = Color(0xFF086847)
     ) {
         val imageId = arrayOf(
             R.drawable.flags,
@@ -35,7 +36,7 @@ fun Categories(navController: NavHostController) {
             R.drawable.teaching,
             R.drawable.ancient,
 
-            )
+        )
 
         val names = arrayOf(
             "Issue No.1: \"Flags & Festivals\" Section",
@@ -51,7 +52,7 @@ fun Categories(navController: NavHostController) {
             "Issue No.11: \"Ancient History\" Section",
 
 
-            )
+        )
 
         val description = arrayOf(
             "Introduces the national flags of several countries and some local festivals"+
@@ -60,9 +61,6 @@ fun Categories(navController: NavHostController) {
                    "This is one possible interpretation of the legend of the German flag development.\n" +
             "GERMANY :  In the first half of the 19th century, Germany was in fact split into a lot of small territories. But when Napoleon attacked Germany, many of the little states had to unify again. Germany got the German Bund. And to have at least a chance to defeat Napoleon, they also had to stay together in their offensive. They needed uniform uniforms. Although there were several ones, they had to color them equally. The only color that was possible for doing that was black. So, they had black uniforms. Step by step they added red coats and gold insignia. The German flag: Black-Red-Gold (yellow today) was inspired by these uniforms. Black was the major color, so it was placed at the top of the order, red in the middle, and gold at the bottom."+
             "I'm from the United States. My country is quite diverse in all aspects of it. With all the different cultures, there are so many different things to do and try and so many different people to meet. Also all the different places and settings you can visit. In just my state, there's a bit of everything- snow, beaches, deserts, and so many more. With all the different food places to activities, not one thing is the same. I think that's what I like most about my country.",
-
-
-
 
 
             "Describes the education systems of several countries from  students' perspectives",
@@ -80,27 +78,7 @@ fun Categories(navController: NavHostController) {
         )
         TopicScreen(imageId , names, description , navController )
         val navController = rememberNavController()
-      /*  NavHost(navController = navController, startDestination = "TopicScreen") {
-            composable(route = "TopicScreen") {
-                TopicScreen(imageId, names, description, navController)
-            }
-            composable(route = "DetailScreen/{index}",
-                arguments = listOf(
-                    navArgument(name = "index") {
-                        type = NavType.IntType
-                    }
-                )
-            ) {index->
-                DetailScreen(
-                    photos = imageId ,
-                    names = names,
-                    description = description,
-                    itemIndex =index.arguments?.getInt("index")
-                )
 
-
-            }
-        }*/
 
     }
 }

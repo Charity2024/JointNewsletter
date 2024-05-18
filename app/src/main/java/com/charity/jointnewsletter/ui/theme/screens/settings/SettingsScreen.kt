@@ -122,7 +122,7 @@ fun GeneralSettingItem(icon: Int, mainText: String, subText: String, onClick: ()
         modifier = Modifier
             .padding(bottom = 8.dp)
             .fillMaxWidth()
-            .background(Color.White),
+            .background(Color(0xFFF3C3A3)),
         // elevation = 0.dp,
     ) {
         Row(
@@ -134,7 +134,7 @@ fun GeneralSettingItem(icon: Int, mainText: String, subText: String, onClick: ()
                 Box(
                     modifier = Modifier
                         .size(34.dp)
-                        .background(Color(0xFFFED9B7))
+                        .background(Color(0xFFF3C3A3))
                 ) {
                     Icon(
                         painter = painterResource(id = icon),
@@ -236,7 +236,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: @Composable () -> Unit) {
         onClick = { onClick},
         modifier = Modifier
             .padding(bottom = 15.dp)
-            .background(Color(0xFFFED9B7))
+            .background(Color(0xFFF3C3A3))
             .fillMaxWidth(),
 
     ) {
@@ -252,7 +252,7 @@ fun SupportItem(icon: Int, mainText: String, onClick: @Composable () -> Unit) {
                     modifier = Modifier
                         .size(34.dp)
                         // .clip(shape = Shapes.medium)
-                        .background(Color(0xFFFED9B7))
+                        .background(Color(0xFFF3C3A3))
                 ) {
                     Icon(
                         painter = painterResource(id = icon),

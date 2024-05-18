@@ -38,7 +38,7 @@ fun SplashScreen(navController: NavHostController) {
                 })
         )
         delay(1500L)
-        navController.navigate(ROUTE_TOPICS)
+        navController.navigate(ROUTE_HOME)
     }
 
     // Image
