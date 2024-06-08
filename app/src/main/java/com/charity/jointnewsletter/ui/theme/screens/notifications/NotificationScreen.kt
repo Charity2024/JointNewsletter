@@ -62,7 +62,7 @@ fun NotificationScreen() {
                 }
              }
                 .size(width = 160.dp, height = 160.dp)
-                .background(Color(0xFF7ABA78))
+                .background(Color(0xFFF3C3A3))
         )
     }
 }

@@ -17,8 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.charity.jointnewsletter.R
-import com.charity.jointnewsletter.navigation.ROUTE_HOME
-import com.charity.jointnewsletter.navigation.ROUTE_TOPICS
+import com.charity.jointnewsletter.navigation.Screen
 import kotlinx.coroutines.delay
 
 @Composable
@@ -38,7 +37,7 @@ fun SplashScreen(navController: NavHostController) {
                 })
         )
         delay(1500L)
-        navController.navigate(ROUTE_HOME)
+        navController.navigate(Screen.Register.route)
     }
 
     // Image

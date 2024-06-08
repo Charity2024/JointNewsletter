@@ -4,9 +4,8 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.widget.Toast
 import androidx.navigation.NavHostController
-import com.charity.jointnewsletter.navigation.ROUTE_HOME
-import com.charity.jointnewsletter.navigation.ROUTE_LOGIN
-import com.charity.jointnewsletter.navigation.ROUTE_REGISTER
+import com.charity.jointnewsletter.model.User
+import com.charity.jointnewsletter.navigation.Screen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -36,22 +35,22 @@ class AuthViewModel(var navController: NavHostController, var context: Context){
             mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener {
                 if (it.isSuccessful){
                     val userdata=
-                        com.charity.jointnewsletter.model.User(email, pass, mAuth.currentUser!!.uid)
+                        User(email, pass, mAuth.currentUser!!.uid)
                     val regRef= FirebaseDatabase.getInstance().getReference()
                         .child("Users/"+mAuth.currentUser!!.uid)
                     regRef.setValue(userdata).addOnCompleteListener {
 
                         if (it.isSuccessful){
                             Toast.makeText(context,"Registered Successfully", Toast.LENGTH_LONG).show()
-                            navController.navigate(ROUTE_LOGIN)
+                            navController.navigate(Screen.Login.route)
 
                         }else{
                             Toast.makeText(context,"${it.exception!!.message}", Toast.LENGTH_LONG).show()
-                            navController.navigate(ROUTE_REGISTER)
+                            navController.navigate(Screen.Register.route)
                         }
                     }
                 }else{
-                    navController.navigate(ROUTE_REGISTER)
+                    navController.navigate(Screen.Register.route)
                 }
 
             } }
@@ -64,18 +63,18 @@ class AuthViewModel(var navController: NavHostController, var context: Context){
             progress.dismiss()
             if (it.isSuccessful){
                 Toast.makeText(context,"Succeffully Logged in", Toast.LENGTH_LONG).show()
-                navController.navigate(ROUTE_HOME)
+                navController.navigate(Screen.Home.route)
 //                navController.navigate(ROUTE_REGISTER)TO TAKE YOU TO A DIIFFERNT PAGE
             }else{
                 Toast.makeText(context,"${it.exception!!.message}", Toast.LENGTH_LONG).show()
-                navController.navigate(ROUTE_LOGIN)
+                navController.navigate(Screen.Login.route)
             }
         }
 
     }
     fun logout(){
         mAuth.signOut()
-        navController.navigate(ROUTE_LOGIN)
+        navController.navigate(Screen.Login.route)
     }
     fun isloggedin():Boolean{
         return mAuth.currentUser !=null

@@ -41,7 +41,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
 import com.charity.jointnewsletter.data.OnboardingData
-import com.charity.jointnewsletter.navigation.ROUTE_REGISTER
+import com.charity.jointnewsletter.navigation.Screen
 import com.charity.jointnewsletter.ui.theme.ButtonCardShape
 import com.charity.jointnewsletter.ui.theme.ColorGreen
 import com.charity.jointnewsletter.ui.theme.ColorYellow
@@ -222,7 +222,7 @@ fun OnboardingPager(
                                 Button(
                                     onClick = {
                                         val navController = null
-                                        navController.navigate(ROUTE_REGISTER)
+                                        navController.navigate(Screen.Register.route)
                                     },
                                     modifier = Modifier
                                         .fillMaxWidth()

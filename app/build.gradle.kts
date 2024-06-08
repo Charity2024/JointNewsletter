@@ -39,6 +39,8 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding =true
+
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -51,14 +53,18 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.androidx.compose.bom))
+
+    // Add the dependencies for the Remote Config and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation(libs.firebase.config)
+    implementation(libs.firebase.analytics)
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
-   // implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.coil.compose)
@@ -71,6 +77,9 @@ dependencies {
     implementation(libs.androidx.games.activity)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.compose.material)
+    implementation(libs.material)
+    implementation(libs.firebase.storage.ktx)
+    implementation(libs.play.services.analytics.impl)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -84,6 +93,12 @@ dependencies {
     implementation(libs.accompanist.pager)
     implementation(libs.androidx.navigation.compose)
     implementation (libs.accompanist.pager)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(platform(libs.firebase.bom))
+    // implementation("com.google.firebase:firebase-database")
+
+
+
 
 
 

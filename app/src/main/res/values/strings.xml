@@ -8,5 +8,7 @@
     <string name="adopt_me">Adopt Me</string>
     <string name="title">Sex</string>
     <string name="topic">Age</string>
+    <string name="remember_password">Remember me</string>
     <string name="title_activity_profile">ProfileActivity</string>
+    <string name="enter_your_password">Enter your password...</string>
 </resources>

@@ -19,6 +19,8 @@ import com.charity.jointnewsletter.ui.theme.screens.login.LoginScreen
 import com.charity.jointnewsletter.ui.theme.screens.notifications.NotificationScreen
 import com.charity.jointnewsletter.ui.theme.screens.onboarding.OnboardingScreen
 import com.charity.jointnewsletter.ui.theme.screens.privacy.MyPolicy
+import com.charity.jointnewsletter.ui.theme.screens.profile.EditProfileScreen
+import com.charity.jointnewsletter.ui.theme.screens.profile.ProfileScreen
 import com.charity.jointnewsletter.ui.theme.screens.register.RegisterScreen
 import com.charity.jointnewsletter.ui.theme.screens.settings.SettingsScreen
 import com.charity.jointnewsletter.ui.theme.screens.splash.SplashScreen
@@ -27,27 +29,27 @@ import com.charity.jointnewsletter.ui.theme.screens.topic.TopicScreen
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier,
                navController: NavHostController = rememberNavController(),
-               startDestination:String= ROUTE_SPLASH) {
+               startDestination:String= Screen.Splash.route) {
 
     NavHost(navController = navController, modifier = modifier, startDestination = startDestination ){
-        composable(ROUTE_SPLASH){
+        composable(Screen.Splash.route){
             SplashScreen(navController )
         }
 
-        composable(ROUTE_LOGIN){
+        composable(Screen.Login.route){
             LoginScreen(navController)
         }
-        composable(ROUTE_REGISTER){
+        composable(Screen.Register.route){
             RegisterScreen(navController)
         }
 
-        composable(ROUTE_HOME){
+        composable(Screen.Home.route){
             HomeScreen(navController)
         }
-        composable(ROUTE_ABOUT){
+        composable(Screen.About.route){
             AboutScreen(navController )
         }
-        composable(ROUTE_CATEGORY){
+        composable(Screen.Cartegory.route){
             Categories(navController )
         }
 
@@ -242,14 +244,20 @@ fun AppNavHost(modifier: Modifier = Modifier,
 
         }
 
-        composable(ROUTE_CONTACT){
+        composable(Screen.Contact.route){
             ContactScreen(navController)
         }
-        composable(ROUTE_ONBOARDING){
+        composable(Screen.Onboarding.route){
             OnboardingScreen(navController )
+       }
+        composable(Screen.Profile.route){
+            ProfileScreen(navController )
+        }
+        composable(Screen.EditProfile.route){
+            EditProfileScreen(navController )
         }
 
-        composable("topics") {
+        composable("topic") {
             val imageIds = arrayOf(
                 R.drawable.flags,
                 R.drawable.school,
@@ -318,17 +326,17 @@ fun AppNavHost(modifier: Modifier = Modifier,
             TopicScreen(imageId = imageIds, names = names, description = descriptions, navController )
         }*/
 
-        composable(ROUTE_POLICY){
+        composable(Screen.Policy.route){
             MyPolicy(navController )
         }
-        composable(ROUTE_NOTIFICATIONS){
+        composable(Screen.Notifications.route){
             NotificationScreen()
         }
-        composable(ROUTE_SETTINGS){
+        composable(Screen.Settings.route){
             SettingsScreen(navController )
 
         }
-        composable(ROUTE_FEEDBACK){
+        composable(Screen.Feedback.route){
             FeedbackScreen(navController )
 
         }

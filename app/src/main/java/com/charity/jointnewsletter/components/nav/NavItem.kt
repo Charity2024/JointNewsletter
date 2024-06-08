@@ -13,13 +13,14 @@ sealed class NavItem {
     object Home :
         Item(path = NavPath.HOME.toString(), title = NavTitle.HOME, icon = Icons.Default.Home)
 
-    object Search :
-        Item(path = NavPath.REGISTER.toString(), title = NavTitle.REGISTER, icon = Icons.Default.Person)
 
     object List :
-        Item(path = NavPath.TOPICS.toString(), title = NavTitle.TOPICS, icon = Icons.AutoMirrored.Filled.List)
+        Item(path = NavPath.TOPIC.toString(), title = NavTitle.TOPIC, icon = Icons.AutoMirrored.Filled.List)
 
-    object Profile :
+    object Settings :
         Item(
             path = NavPath.SETTINGS.toString(), title = NavTitle.SETTINGS, icon = Icons.Default.Settings)
+    object Profile :
+        Item(
+            path = NavPath.PROFILE.toString(), title = NavTitle.PROFILE, icon = Icons.Default.Person)
 }

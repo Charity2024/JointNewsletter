@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,7 +19,7 @@ import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,7 +37,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,25 +47,26 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
 import com.charity.jointnewsletter.data.AuthViewModel
-import com.charity.jointnewsletter.navigation.ROUTE_REGISTER
+import com.charity.jointnewsletter.navigation.Screen
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var pass by remember { mutableStateOf(TextFieldValue("")) }
+    var passwordVisible by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val gradientColorList = listOf(
         Color(0xFFFED9B7),
         Color(0xFFF07167)
     )
     val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .verticalScroll(scrollState)
             .fillMaxSize()
             .background(
-                brush = gradientackgroundBrush(
+                brush = gradientBackgroundBrush(
                     isVerticalGradient = true,
                     colors = gradientColorList
                 )
@@ -72,8 +74,10 @@ fun LoginScreen(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(10.dp))
-        Image(painter = painterResource(id = R.drawable.logo2 ),
-            contentDescription = "lock" )
+        Image(
+            painter = painterResource(id = R.drawable.logo2),
+            contentDescription = "lock"
+        )
         Spacer(modifier = Modifier.height(15.dp))
 
         Text(
@@ -92,25 +96,40 @@ fun LoginScreen(navController: NavHostController) {
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier
                 .fillMaxWidth(0.8f)
-                .padding(8.dp),
-
-            )
-        Spacer(modifier = Modifier.height(20.dp))
-
-        OutlinedTextField(
-            value = pass, onValueChange = { pass = it },
-            label = { Text(text = "Enter Password") },
-            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "") },
-            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .padding(8.dp),
+                .padding(8.dp)
         )
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = {
-            val mylogin = AuthViewModel(navController, context)
-            mylogin.login(email.text.trim(), pass.text.trim()) },
+        OutlinedTextField(
+            value = pass,
+            onValueChange = { pass = it },
+            label = { Text(text = "Enter Password") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "") },
+            trailingIcon = {
+                val image = if (passwordVisible)
+
+                   R.drawable.visibility
+                else
+                    R.drawable.visibility_off
+
+                IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                    Icon(painter = painterResource(id = image), contentDescription = if (passwordVisible) "Hide password" else "Show password")
+                  //  Icon(imageVector = image, contentDescription = if (passwordVisible) "Hide password" else "Show password")
+                }
+            },
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .padding(8.dp)
+        )
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(
+            onClick = {
+                val myLogin = AuthViewModel(navController, context)
+                myLogin.login(email.text.trim(), pass.text.trim())
+            },
             border = BorderStroke(1.dp, Color.DarkGray),
             colors = ButtonDefaults.buttonColors(Color(0xFFCF7650)),
             modifier = Modifier.fillMaxWidth(0.4f)
@@ -119,32 +138,24 @@ fun LoginScreen(navController: NavHostController) {
         }
         Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "Don't have an account?  Sign up",
+        Text(
+            text = "Don't have an account?  Sign up",
             color = Color.Black,
             modifier = Modifier
-                .clickable { navController.navigate(ROUTE_REGISTER)}
-
+                .clickable { navController.navigate(Screen.Register.route) }
         )
         Spacer(modifier = Modifier.height(60.dp))
-        Text(text = "Don't have an account?  Sign up",
-            color = Color.Black,
-            modifier = Modifier
-                .clickable { navController.navigate(ROUTE_REGISTER)}
-
-        )
-
-
     }
-
 }
+
 @Composable
-private fun gradientackgroundBrush(
+private fun gradientBackgroundBrush(
     isVerticalGradient: Boolean,
-    colors:List<Color>
+    colors: List<Color>
 ): Brush {
-    val endOffset = if (isVerticalGradient){
+    val endOffset = if (isVerticalGradient) {
         Offset(0f, Float.POSITIVE_INFINITY)
-    }else{
+    } else {
         Offset(Float.POSITIVE_INFINITY, 0f)
     }
     return Brush.linearGradient(
@@ -152,12 +163,10 @@ private fun gradientackgroundBrush(
         start = Offset.Zero,
         end = endOffset
     )
-
 }
 
-
-@Preview
 @Composable
-fun Loginpage() {
+@Preview
+fun LoginPagePreview() {
     LoginScreen(rememberNavController())
 }

@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -45,7 +44,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.charity.jointnewsletter.R
 import com.charity.jointnewsletter.data.AuthViewModel
-import com.charity.jointnewsletter.navigation.ROUTE_LOGIN
+import com.charity.jointnewsletter.navigation.Screen
 
 
 @Composable
@@ -136,14 +135,10 @@ fun RegisterScreen(navController: NavHostController) {
         Text(text = "Have an Account? Click to Login",
             color = Color.Black,
             modifier = Modifier
-                .clickable { navController.navigate(ROUTE_LOGIN)}
+                .clickable { navController.navigate(Screen.Login.route)}
         )
         Spacer(modifier = Modifier.height(70.dp))
-        Text(text = "Have an Account? Click to Login",
-            color = Color.Black,
-            modifier = Modifier
-                .clickable { navController.navigate(ROUTE_LOGIN)}
-        )
+
 
 
     }
